@@ -10,9 +10,9 @@ import type { AxiosError } from "axios";
 
 import { SpinnerContext } from "./page-spinner";
 import { registerUserPost } from "../utils/fetch";
-import { financeManagerRegistrationSchema } from "../utils/validation-schema";
+import { userRegistrationSchema } from "../utils/validation-schema";
 
-export const FinanceManagerRegistrationForm: FC = () => {
+export const UserRegistrationForm: FC = () => {
   const { showSpinner, hideSpinner } = useContext(SpinnerContext);
 
   const { mutate, isPending } = useMutation({
@@ -51,11 +51,11 @@ export const FinanceManagerRegistrationForm: FC = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(financeManagerRegistrationSchema),
+    resolver: yupResolver(userRegistrationSchema),
   });
 
   const onSubmit = (
-    data: yup.InferType<typeof financeManagerRegistrationSchema>
+    data: yup.InferType<typeof userRegistrationSchema>
   ) => {
     if (confirm("Are you sure you want to submit the registration form?")) {
       mutate(data);

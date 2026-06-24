@@ -14,10 +14,10 @@ export const login = (authToken: string, name: string, email: string) => {
     }),
     {
       path: "/",
-    }
+    },
   );
 
-  location.href = "/invoice/view-invoices";
+  location.href = "/flash-sale";
 };
 
 export const logout = () => {

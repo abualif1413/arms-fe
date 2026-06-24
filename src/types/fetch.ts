@@ -1,14 +1,4 @@
-export interface PaginatedFilter {
-  page: number;
-  limit: number;
-}
-
-export interface PaginatedResult {
-  totalItems: number;
-  totalPages: number;
-}
-
-export interface FinanceManagerRegistration {
+export interface UserRegistration {
   email: string;
   name: string;
   password: string;
@@ -28,61 +18,43 @@ export interface LoginResponse {
   authenticationToken: string;
 }
 
-export interface InvoiceData {
-  id?: string;
-  invoiceNumber: string;
-  customerName: string;
-  customerEmail: string;
-  customerPhone: string;
-  invoiceDate: Date;
-  dueDate: Date;
-  amount: number;
-  paymentToken?: string;
+export interface FlashSaleResponse {
+  flashSaleInfo: FlashSaleInfo | null;
 }
 
-export enum PaymentStatus {
-  ALL = "all",
-  PAYMENT_LINK_NOT_GENERATED = "payment_link_not_generated",
-  OUTSTANDING = "outstanding",
-  PAID = "paid",
-  OVERDUE = "overdue",
+export interface FlashSaleInfo {
+  product: Product;
+  flashSale: FlashSale;
 }
 
-export enum DataOwner {
-  ALL = "all",
-  OWNED_BY_ME = "owned_by_me",
-}
-
-export interface FilterInvoice extends PaginatedFilter {
-  invoiceNumber?: string;
-  customer?: string;
-  invoiceDateStart?: string;
-  invoiceDateEnd?: string;
-  dueDateStart?: string;
-  dueDateEnd?: string;
-  paymentStatus?: PaymentStatus;
-  dataOwner?: DataOwner;
-}
-
-export interface DetailInvoice {
+export interface Product {
   id: string;
-  invoiceNumber: string;
-  customerName: string;
-  customerEmail: string;
-  customerPhone: string;
-  invoiceDate: Date;
-  dueDate: Date;
-  amount: number;
-  paymentStatus: PaymentStatus;
+  name: string;
+  description: string;
+  unit: string;
+  availableStock: number;
+  price: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface FilterInvoiceResult extends PaginatedResult {
-  invoices: DetailInvoice[];
-}
-
-export interface PaidInvoice {
+export interface FlashSale {
   id: string;
-  invoiceId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  startDate: string;
+  endDate: string;
+  createdAt: string;
+  updatedAt: string;
+  product: Product;
+  purchases: Purchase[];
+}
+
+export interface Purchase {
+  flashSale?: FlashSale;
+  user?: UserRegistration;
+  purchaseCode: string;
+  status: string;
+  message: any;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
 }

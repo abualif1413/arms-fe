@@ -1,12 +1,9 @@
 import { createBrowserRouter } from "react-router";
-import { FinanceManagerRegistrationForm } from "../components/finance-manager-registration";
+import { UserRegistrationForm } from "../components/user-registration";
 import { MasterPage } from "../components/master-page";
 import { Login } from "../components/login";
 import { Dashboard } from "../components/dashboard";
-import { InvoiceInput } from "../components/invoice-input";
-import { ViewInvoices } from "../components/view-invoices";
-import { GeneratePaymentLink } from "../components/generate-payment-link";
-import { InvoicePayment } from "../components/invoice-payment";
+import { FlashSale } from "../components/flash-sale";
 
 export const routes = createBrowserRouter([
   {
@@ -15,46 +12,23 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/register",
-        element: <FinanceManagerRegistrationForm />,
+        element: <UserRegistrationForm />,
       },
       {
         path: "/login",
         element: <Login />,
       },
-      {
-        path: "/payment/:paymentToken",
-        element: <InvoicePayment />,
-      },
     ],
   },
   {
-    path: "/invoice",
+    path: "/flash-sale",
     element: <Dashboard />,
     children: [
       {
-        path: "/invoice/dashboard/",
+        path: "/flash-sale",
         element: (
-          <>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Welcome to the Dashboard
-            </h2>
-            <p className="text-gray-600">
-              Choose an option from the sidebar to get started.
-            </p>
-          </>
+          <FlashSale />
         ),
-      },
-      {
-        path: "/invoice/create-invoice",
-        element: <InvoiceInput />,
-      },
-      {
-        path: "/invoice/view-invoices",
-        element: <ViewInvoices />,
-      },
-      {
-        path: "/invoice/generate-payment-link",
-        element: <GeneratePaymentLink />,
       },
     ],
   },

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router";
+import { useRef } from "react";
+import { Link, Outlet, useLocation } from "react-router";
 import classNames from "classnames";
 import Cookies from "universal-cookie";
 
@@ -12,17 +12,10 @@ export const Dashboard: React.FC = () => {
   const userInformation = useRef({ name: "", email: "" });
 
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   if (cookie.get(COOKIE_USER_INFORMATION)) {
     userInformation.current = cookie.get("userInformation");
   }
-
-  useEffect(() => {
-    if (pathname === "/invoice") {
-      navigate("/invoice/view-invoices");
-    }
-  }, [pathname]);
 
   return (
     <div className="min-h-screen flex bg-gray-50">
@@ -82,7 +75,7 @@ export const Dashboard: React.FC = () => {
 
         {/* Footer */}
         <div className="px-5 py-3 border-t border-gray-200 text-xs text-gray-500">
-          Ara Tech Assessment - Ilham Akbar
+          Bookipi Assessment - Flash Sale - Ilham Akbar
         </div>
       </aside>
 

@@ -14,7 +14,7 @@ export const MasterPage: React.FC = () => {
     }
 
     if (cookie.get(COOKIE_AUTH_TOKEN) && !pathname.includes("/payment")) {
-      navigate("/invoice");
+      navigate("/flash-sale");
     }
   }, [pathname]);
 
