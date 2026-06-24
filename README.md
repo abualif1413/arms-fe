@@ -1,73 +1,109 @@
-# React + TypeScript + Vite
+# Flash Sale Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend application for the Flash Sale Service.
 
-Currently, two official plugins are available:
+Built with:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- TypeScript
+- Vite
 
-## React Compiler
+This repository exists to provide a simple user interface for testing and interacting with the Flash Sale API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Instead of manually invoking endpoints through Postman, this application offers a more intuitive way to:
 
-## Expanding the ESLint configuration
+- Register users
+- Login
+- View active flash sales
+- View upcoming flash sales
+- View recent flash sales
+- Purchase flash sale products
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Before running the application, ensure you have:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js
+- npm
+
+---
+
+# Getting Started
+
+## Install Dependencies
+
+```bash
+npm i
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Development Mode
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Run the application locally with hot reload:
+
+```bash
+npm run dev
 ```
+
+The application will be available at the URL displayed by Vite, typically:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Build for Production
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+---
+
+## Run Production Build
+
+Serve the production build:
+
+```bash
+npm run start
+```
+
+---
+
+# Purpose
+
+This project is intentionally lightweight and serves as a visual client for the backend Flash Sale Service.
+
+Its primary goal is to make API testing and demonstration easier by providing a simple user interface rather than relying solely on tools such as Postman or cURL.
+
+---
+
+# Technology Stack
+
+| Technology | Purpose                         |
+| ---------- | ------------------------------- |
+| React      | UI Library                      |
+| TypeScript | Programming Language            |
+| Vite       | Build Tool & Development Server |
+
+---
+
+# Related Repository
+
+This frontend is designed to work with the Flash Sale backend service built using:
+
+- NestJS
+- PostgreSQL
+- Redis
+- TypeORM
+- BullMQ
+
+Please ensure the backend service is running before using this application.
+
+---
